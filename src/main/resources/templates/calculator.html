@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <title>My Calculator</title>
+</head>
+<body>
+   <div class="container w-50 mt-5">
+     <img src="/img/comit.png" alt="ComIT logo"> 
+     <div class="jumbotron mt-4 py-4">
+       <h1 class="display-4">My Calculator!</h1>
+       <p class="lead text-muted">This is a Calculator with the basic arithmetic operations like Addition, Subtraction, Division, Multiplication and Modulus.</p>
+       <hr class="my-4">
+       <p>Please input two numbers and choose an operation.</p>
+       <form>
+         <div class="form-group row">
+           <label for="num1" class="col-sm-3 col-form-label text-right">Number 1:</label>
+           <div class="col-sm-5">
+             <input type="number" class="form-control" step="any" id="num1" required>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="num2" class="col-sm-3 col-form-label text-right">Number 2:</label>
+           <div class="col-sm-5">
+             <input type="number" class="form-control" step="any" id="num2" required>
+           </div>
+         </div>
+         <div class="form-group row">
+           <label for="operation" class="col-sm-3 col-form-label text-right">Operation:</label>
+           <div class="col-sm-5">
+             <select class="form-control custom-select" id="operation" required>
+                <option value="" selected>Select an Operation</option>
+                <option value="+">Addition</option>
+                <option value="-">Subtraction</option>
+                <option value="*">Multiplication</option>
+                <option value="/">Division</option>
+                <option value="%">Modulus</option>
+             </select>
+           </div>
+         </div>
+         <div class="text-center mt-4">
+           <button type="submit" class="btn btn-primary btn-lg">Calculate</button>      
+         </div>
+       </form>
+     </div>
+   </div>  
+</body>
+</html>
