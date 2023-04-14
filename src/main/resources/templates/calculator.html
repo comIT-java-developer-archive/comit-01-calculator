@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,30 +14,36 @@
        <p class="lead text-muted">This is a Calculator with the basic arithmetic operations like Addition, Subtraction, Division, Multiplication and Modulus.</p>
        <hr class="my-4">
        <p>Please input two numbers and choose an operation.</p>
-       <form>
+       <form action="/calculate" method="post">
          <div class="form-group row">
            <label for="num1" class="col-sm-3 col-form-label text-right">Number 1:</label>
            <div class="col-sm-5">
-             <input type="number" class="form-control" step="any" id="num1" required>
+             <input type="number" class="form-control" step="any" id="num1" name="num1" th:value="${num1}" required>
            </div>
          </div>
          <div class="form-group row">
            <label for="num2" class="col-sm-3 col-form-label text-right">Number 2:</label>
            <div class="col-sm-5">
-             <input type="number" class="form-control" step="any" id="num2" required>
+             <input type="number" class="form-control" step="any" id="num2" name="num2" th:value="${num2}" required>
            </div>
          </div>
          <div class="form-group row">
            <label for="operation" class="col-sm-3 col-form-label text-right">Operation:</label>
            <div class="col-sm-5">
-             <select class="form-control custom-select" id="operation" required>
-                <option value="" selected>Select an Operation</option>
-                <option value="+">Addition</option>
-                <option value="-">Subtraction</option>
-                <option value="*">Multiplication</option>
-                <option value="/">Division</option>
-                <option value="%">Modulus</option>
+             <select class="form-control custom-select" id="operation" name="operation" required>
+                <option value=""  th:selected="${operation eq '' }">Select an Operation</option>
+                <option value="+" th:selected="${operation eq '+'}">Addition</option>
+                <option value="-" th:selected="${operation eq '-'}">Subtraction</option>
+                <option value="*" th:selected="${operation eq '*'}">Multiplication</option>
+                <option value="/" th:selected="${operation eq '/'}">Division</option>
+                <option value="%" th:selected="${operation eq '%'}">Modulus</option>
              </select>
+           </div>
+         </div>
+         <div class="form-group row" th:if="${!#strings.isEmpty(res)}">
+           <label for="num2" class="col-sm-3 col-form-label text-right">Result:</label>
+           <div class="col-sm-5">
+             <input type="text" class="form-control bg-warning text-dark" th:value="${#numbers.formatDecimal(res,1,2)}" readonly>
            </div>
          </div>
          <div class="text-center mt-4">
